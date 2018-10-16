@@ -1,1 +1,1 @@
-from .api import random, Random
+from .api import random, Random, RANDMIN, RANDMAX

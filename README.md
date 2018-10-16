@@ -18,4 +18,9 @@ pip install lavarand
 >>> print(random.val)
 "hp7RWuKfuUHWXvAQTUEtRits0chzZWHDjP58nVmwOZM"
 
+
+>>> random = lavarand.random(length=50)
+>>> print(random)
+"F9Pziq9ZxBjntW2OYeADSMnpBDWtRI8txyZwH/JuzMpirs0cFh+eGiu3JGd4PVsDq+8=="
+
 ```

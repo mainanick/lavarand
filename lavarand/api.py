@@ -9,6 +9,9 @@ import requests
 
 API_URL = "https://csprng.xyz/v1/api"
 
+RANDMAX = 65535
+RANDMIN = 1
+
 class LavarandException(Exception):
   pass
 
@@ -25,6 +28,9 @@ class Random(dict):
     return self["time"]
 
 def random(length=32, form="base64", with_time=False):
+
+  length = 32 if length < RANDMIN else min([RANDMAX, length])
+  
   try:
     res = requests.get(API_URL, params={"length":length, "format":form}).json()
   except Exception as e:
@@ -34,7 +40,3 @@ def random(length=32, form="base64", with_time=False):
     return res["Data"]
   
   return Random({"value":res["Data"], "time":res["Time"]})
-
-
-if __name__ == '__main__':
-  print(random().val)
