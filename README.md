@@ -1,3 +1,7 @@
+### [Randomness-101-lavarand-in-production](https://blog.cloudflare.com/randomness-101-lavarand-in-production/)
+
+https://csprng.xyz/
+
 ```
 pip install lavarand
 ```
