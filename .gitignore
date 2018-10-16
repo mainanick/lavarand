@@ -1,0 +1,12 @@
+pylint.txt
+toy.py
+.cache/
+cover/
+build/
+docs/_build
+lavarand.egg-info/
+*.pyc
+*.swp
+*.egg
+env/
+dist
