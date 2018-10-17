@@ -25,6 +25,6 @@ def random(size=32):
 
     try:
         return requests.get(API_URL, params={"length": size}).json()["Data"]
-    except Exception as e:  # try catch all exceptions
+    except Exception:  # try catch all exceptions
         warnings.warn("Was unable to use lava random fallback to os urandom")
         return b64encode(os.urandom(size)).decode("utf-8")
