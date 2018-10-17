@@ -1,4 +1,7 @@
-from collections import namedtuple
+import os
+import sys
+import warnings
+from base64 import b64encode
 
 import requests
 
@@ -14,20 +17,18 @@ RANDMAX = 65535
 RANDMIN = 1
 
 
-class LavarandException(Exception):
-    pass
+def random(size=32):
 
+    assert isinstance(size, int)
 
-def random(length=32, with_time=False, form="base64"):
-
-    length = 32 if length < RANDMIN else min([RANDMAX, length])
+    size = 32 if size < RANDMIN else min([RANDMAX, size])
 
     try:
-        res = requests.get(API_URL, params={"length": length, "format": form}).json()
-    except Exception as e:
-        raise LavarandException(str(e))
+        return requests.get(API_URL, params={"length": size}).json()["Data"]
+    except Exception as e:  # try catch all exceptions
+        warnings.warn("Was unable to use lava random fallback to os urandom")
+        return b64encode(os.urandom(size)).decode("utf-8")
 
-    if with_time:
-        return namedtuple("Random", ["val", "time"])(val=res["Data"], time=res["Time"])
 
-    return res["Data"]
+if __name__ == "__main__":
+    assert len(random(32)) == 44

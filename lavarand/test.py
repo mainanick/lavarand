@@ -1,3 +1,3 @@
 import lavarand
 
-print(lavarand.random())
+assert lavarand.random(32) == 44
