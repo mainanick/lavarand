@@ -28,7 +28,3 @@ def random(size=32):
     except Exception as e:  # try catch all exceptions
         warnings.warn("Was unable to use lava random fallback to os urandom")
         return b64encode(os.urandom(size)).decode("utf-8")
-
-
-if __name__ == "__main__":
-    assert len(random(32)) == 44
