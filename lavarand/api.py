@@ -11,8 +11,6 @@ import requests
 
 """
 
-API_URL = "https://csprng.xyz/v1/api"
-
 RANDMAX = 65535
 RANDMIN = 1
 
@@ -24,7 +22,9 @@ def random(size=32):
     size = 32 if size < RANDMIN else min([RANDMAX, size])
 
     try:
-        return requests.get(API_URL, params={"length": size}).json()["Data"]
+        return requests.get(
+            "https://csprng.xyz/v1/api", params={"length": size}
+        ).json()["Data"]
     except Exception:  # try catch all exceptions
         warnings.warn("Was unable to use lava random fallback to os urandom")
         return b64encode(os.urandom(size)).decode("utf-8")

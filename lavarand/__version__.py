@@ -1,7 +1,7 @@
 __title__ = "lavarand"
 __description__ = "Randomness 101: LavaRand in Production"
 __url__ = "https://csprng.xyz/"
-__version__ = "1.1.1.4"
+__version__ = "1.1.1.5"
 __author__ = "Maina Nick"
 __email__ = "contact@nickmaina.com"
 __license__ = "DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE 2.0"
